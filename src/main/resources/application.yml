@@ -1,0 +1,45 @@
+# https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
+
+info:
+  description: Hibernate Search Demo
+server:
+  port: 8080
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher # needed for springfox
+  profiles:
+    # Default to local if nothing else is configured
+    active: local
+  main:
+    register-shutdown-hook: true
+
+management:
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    info:
+      enabled: true
+    health:
+      show-components: ALWAYS
+      enabled: true
+    probes:
+      enabled: true
+    web:
+      base_path: /actuator
+  server:
+    port: 12380 # Must differ from normal port because of swagger
+
+hibernate:
+  search:
+    default:
+      directory_provider: filesystem
+      indexBase: index/lucene-default

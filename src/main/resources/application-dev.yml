@@ -1,0 +1,8 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        search:
+          default:
+            directory_provider: filesystem
+            indexBase: /index-volume/demo-application
