@@ -37,9 +37,3 @@ management:
       base_path: /actuator
   server:
     port: 12380 # Must differ from normal port because of swagger
-
-hibernate:
-  search:
-    default:
-      directory_provider: filesystem
-      indexBase: index/lucene-default

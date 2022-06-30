@@ -8,6 +8,7 @@ import lombok.experimental.Accessors;
 import lombok.experimental.FieldNameConstants;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
 
 import javax.persistence.*;
 
@@ -22,16 +23,16 @@ import javax.persistence.*;
 @FieldNameConstants
 public class Movie {
 
-    @Id
+    @Id // <- Is also used by Hibernate search
     @GeneratedValue
     private Long id;
 
     @Column(name = "title")
-    @Field
+    @Field(store = Store.NO)
     private String title;
 
     @Column(name = "story_line")
-    @Field
+    @Field(store = Store.NO)
     private String storyLine;
 }
 

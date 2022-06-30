@@ -3,6 +3,7 @@ spring:
     properties:
       hibernate:
         search:
-          default:
+          default: # <- This is the index name
             directory_provider: filesystem
             indexBase: /index-volume/demo-application
+            indexmanager: directory-based # default
