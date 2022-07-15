@@ -34,6 +34,11 @@ public class ApiController {
         return movieSearch.search(searchTerm);
     }
 
+    @GetMapping(value = "/api/explain")
+    public String explain(@RequestParam String searchTerm) {
+        return movieSearch.explain(searchTerm);
+    }
+
     @PostMapping(value = "/api/reindex")
     public void reindex() {
         indexBuilder.reindex(false);
