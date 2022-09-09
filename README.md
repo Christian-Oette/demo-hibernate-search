@@ -4,8 +4,14 @@ Demo Project to test hibernate search with a standard lucene index
 ## How to use
 
 - Start the application
-- Open http://localhost:8080 and you will be redirected to the swagger-ui
-- Interact with the api to search for Movies
+- Open http://localhost:8080
+- Type in your search
+
+![Application Screenshot](docs/screenshot.png?raw=true "Application")
+
+## Use the swagger api
+
+- Alternatively to the start page you can use http://localhost:8080/swagger-ui/index.html
 
 ```
     GET /api/search

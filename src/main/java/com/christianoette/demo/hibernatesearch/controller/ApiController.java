@@ -24,19 +24,9 @@ public class ApiController {
     private final MovieSearch movieSearch;
     private final IndexBuilder indexBuilder;
 
-    @GetMapping(value = "/")
-    public RedirectView redirectToSwagger() {
-        return new RedirectView("/swagger-ui/index.html");
-    }
-
     @GetMapping(value = "/api/search")
     public List<Movie> search(@RequestParam String searchTerm) {
         return movieSearch.search(searchTerm);
-    }
-
-    @GetMapping(value = "/api/explain")
-    public String explain(@RequestParam String searchTerm) {
-        return movieSearch.explain(searchTerm);
     }
 
     @PostMapping(value = "/api/reindex")

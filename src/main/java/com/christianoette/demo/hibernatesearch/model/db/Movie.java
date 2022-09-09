@@ -43,7 +43,7 @@ public class Movie {
     @Field(store = Store.NO)
     private String title;
 
-    @Column(name = "story_line")
+    @Column(name = "story_line", columnDefinition = "TEXT")
     @Field(store = Store.NO, analyzer = @Analyzer(definition = "customAnalyzer"))
     private String storyLine;
 }

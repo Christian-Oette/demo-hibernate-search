@@ -45,7 +45,7 @@ public class DemoDataCreator {
     private void storeMovieInDatabase(MovieItem movieItem) {
         Movie movie = new Movie();
         movie.setTitle(movieItem.getOriginalTitle());
-        movie.setStoryLine(StringUtils.abbreviate(movieItem.getStoryline(), 250));
+        movie.setStoryLine(movieItem.getStoryline());
         Movie savedMovie = movieRepository.save(movie);
         log.info("Save demo data {}", savedMovie);
     }

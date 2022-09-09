@@ -38,8 +38,12 @@ public class SearchUtils {
      * Search for "A" <- Should not work (A is filtered and never indexed)
      */
     public boolean iSearchPossibleOrAlreadyFilteredByAnalyzer(Class<?> entity, String fieldName, String searchTerm) {
-        Analyzer customAnalyzer = getFullTextEntityManager().getSearchFactory().getAnalyzer(entity);
+        Analyzer customAnalyzer = getAnalyzer(entity);
         return anyTokensLeftAfterAnalyze(customAnalyzer, fieldName, searchTerm );
+    }
+
+    public Analyzer getAnalyzer(Class<?> entity) {
+        return getFullTextEntityManager().getSearchFactory().getAnalyzer(entity);
     }
 
     /**

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hibernate Search Demo</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+    <div class="container">
+        <form class="search-form" action="/">
+            <input type="text" name="searchTerm" title="search" class="search-bar" placeholder="Search anything">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+        <div class="break"></div>
+        <div class="search-results">
+            <div th:each="movie : ${movies}">
+                <p class="result-title" th:text="${movie.title}"></p>
+                <p class="result-storyline" th:text="${movie.storyLine}"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

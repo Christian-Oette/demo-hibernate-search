@@ -29,6 +29,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -78,6 +82,13 @@
 			<artifactId>hibernate-search-orm</artifactId>
 			<version>5.11.10.Final</version>
 		</dependency>
+
+<!--		Highlighting not yet implemented-->
+<!--		<dependency>-->
+<!--			<groupId>org.apache.lucene</groupId>-->
+<!--			<artifactId>lucene-highlighter</artifactId>-->
+<!--			<version>5.5.5</version>-->
+<!--		</dependency>-->
 
 	</dependencies>
 
