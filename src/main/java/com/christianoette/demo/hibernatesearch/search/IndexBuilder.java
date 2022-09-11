@@ -1,33 +1,31 @@
 package com.christianoette.demo.hibernatesearch.search;
 
 import com.christianoette.demo.hibernatesearch.model.db.Movie;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.CacheMode;
 import org.hibernate.search.batchindexing.MassIndexerProgressMonitor;
 import org.hibernate.search.jpa.FullTextEntityManager;
-import org.hibernate.search.jpa.Search;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class IndexBuilder implements MassIndexerProgressMonitor{
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    private final SearchUtils searchUtils;
 
     @EventListener(ApplicationStartedEvent.class)
     @SneakyThrows
     @Transactional
     public void builIndexOnStartup() {
         log.info("Rebuild index");
-        FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+        FullTextEntityManager fullTextEntityManager = searchUtils.getFullTextEntityManager();
         fullTextEntityManager.createIndexer()
                 .progressMonitor(this)
                 .startAndWait();
@@ -38,7 +36,7 @@ public class IndexBuilder implements MassIndexerProgressMonitor{
     @Transactional
     public void reindex(boolean purge) {
         log.info("Trigger reIndex");
-        FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+        FullTextEntityManager fullTextEntityManager = searchUtils.getFullTextEntityManager();
         fullTextEntityManager
                 .createIndexer( Movie.class )
                 .purgeAllOnStart(purge)
